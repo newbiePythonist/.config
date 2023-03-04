@@ -13,20 +13,27 @@ fu! BufferDelete()
     return
 endfunction
 
+fu! VsplitDirvish()
+    Dirvish
+endfunction
+
 " general improvements (search, ergonomics, easy netrw startup)
 " use :b#|bd# to avoid :Le to become fullscreen
 nmap <silent> <leader>q :silent! call BufferDelete()<cr>
-nmap <silent> <leader>e :Le<cr>
-au FileType netrw nmap <silent> <buffer> u -
-au FileType netrw cnoremap <silent> <buffer> <cr> <cr>:redraw!<cr>:call feedkeys("\<C-l>")<cr>
-au FileType netrw nnoremap <buffer> D /.*\/$<C-b>
-au FileType netrw nnoremap <buffer> f /.*[^/]$<C-b>
+nmap <silent> <leader>e :call VsplitDirvish()<cr>
+au FileType dirvish nmap <silent> <buffer> u -
+au FileType dirvish nmap <silent> <buffer> <cr> :call dirvish#open("edit", 0)<cr>
+au BufNew,FileType dirvish silent! cd %
+au BufNew,FileType dirvish setl nornu
+" au FileType dirvish cnoremap <silent> <buffer> <cr> <cr>:redraw!<cr>:call feedkeys("\<C-l>")<cr>
+au FileType dirvish nnoremap <buffer> D /.*\/$<C-b>
+au FileType dirvish nnoremap <buffer> f /.*[^/]$<C-b>
 " create, copy, move, rename, delete files/folders
-au FileType netrw nnoremap <buffer> t :silent! !touch 
-au FileType netrw nnoremap <buffer> mk :silent! !mkdir 
-au FileType netrw nnoremap <silent> <buffer> dd "syy:silent! !rm -rf <C-r>s<cr>:call feedkeys("\<C-l>")<cr>
-au FileType netrw nnoremap <buffer> yy "syy:silent! !cp -a <C-r>s 
-au FileType netrw nnoremap <buffer> mv "syy:silent! !mv <C-r>s 
+au FileType dirvish nnoremap <buffer> t :silent! !touch 
+au FileType dirvish nnoremap <buffer> mk :silent! !mkdir 
+au FileType dirvish nnoremap <silent> <buffer> dd "syy:silent! !rm -rf <C-r>s<cr>:call feedkeys("\<C-l>")<cr>
+au FileType dirvish nnoremap <buffer> yy "syy:silent! !cp -a <C-r>s 
+au FileType dirvish nnoremap <buffer> mv "syy:silent! !mv <C-r>s 
 
 " Nvim built-in terminal
 nmap <silent> <leader>t :term<CR>:set nonu nornu<CR>i

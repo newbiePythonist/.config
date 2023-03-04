@@ -36,6 +36,7 @@ return require('packer').startup(function()
 		}
 	}
 
+    use 'justinmk/vim-dirvish'
     use 'windwp/nvim-autopairs'
     -- use 'sheerun/vim-polyglot'
 

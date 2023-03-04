@@ -28,7 +28,8 @@ set.scrolloff = 22
 
 cmd [[
     " so ~/.config/nvim/colors/delek.vim
-    colo zellner
+    let g:dirvish_mode = ':sort ,^.*[\/],'
+    colo nightfly
     hi Comment gui=none
     so ~/.config/nvim/vimscript/mappings.vim
     so ~/.config/nvim/vimscript/autocmds.vim
