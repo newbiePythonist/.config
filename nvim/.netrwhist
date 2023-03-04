@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =2
+let g:netrw_dirhist_2='/home/newbie/.config/nvim/lua'
+let g:netrw_dirhist_1='/home/newbie/.config/nvim'
+let g:netrw_dirhist_0='/home/newbie/projects/cpp'
+let g:netrw_dirhist_9='/home/newbie/projects'
+let g:netrw_dirhist_8='/home/newbie/projects/py'
+let g:netrw_dirhist_7='/home/newbie/projects'
+let g:netrw_dirhist_6='/home/newbie'
+let g:netrw_dirhist_5='/home/newbie/projects/cpp'
+let g:netrw_dirhist_4='/home/newbie/projects'
+let g:netrw_dirhist_3='/home/newbie/.config'
