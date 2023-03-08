@@ -21,8 +21,9 @@ endfunction
 " use :b#|bd# to avoid :Le to become fullscreen
 nmap <silent> <leader>q :silent! call BufferDelete()<cr>
 nmap <silent> <leader>e :call VsplitDirvish()<cr>
-au FileType dirvish nmap <silent> <buffer> u -
-au FileType dirvish nmap <silent> <buffer> <cr> :call dirvish#open("edit", 0)<cr>
+" au FileType dirvish nmap <silent> <buffer> u -
+au FileType dirvish nmap <buffer> u -:exe "bw!" bufnr()-1 ""<cr>:e<cr>
+au FileType dirvish nnoremap <silent> <buffer> <cr> :call dirvish#open("edit", 0)<cr>:exe "bw!" bufnr()-1 ""<cr>:e<cr>
 au FileType dirvish nnoremap <silent> <buffer> e "syy<C-w>l:e <C-r>s<cr>"
 au BufNew,FileType dirvish silent! cd %
 au BufNew,FileType dirvish setl nornu

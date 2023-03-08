@@ -28,7 +28,6 @@ set.scrolloff = 22
 
 cmd [[
     " so ~/.config/nvim/colors/delek.vim
-    let g:dirvish_mode = ':sort ,^.*[\/],'
     colo nightfly
     hi Comment gui=none
     so ~/.config/nvim/vimscript/mappings.vim
@@ -38,6 +37,10 @@ cmd [[
 	set signcolumn=no
 	set inccommand=nosplit
 ]]
+
+-- vim dirvish 
+cmd [[ let g:dirvish_mode = ':sort ,^.*[\/],']]
+g.dirvish_relative_path = 1
 
 -- netrw settings
 g.netrw_banner = 0
