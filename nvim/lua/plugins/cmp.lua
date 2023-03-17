@@ -17,6 +17,9 @@ cmp.setup({
 	completion = {
 		completeopt = 'menu,menuone,noinsert',
 	},
+    view = {
+        entries = "native",
+    },
 	snippet = {
 		expand = function(args)
 			-- For `vsnip` user.
@@ -25,9 +28,6 @@ cmp.setup({
 	},
 	experimental = {
 		ghost_text = false,
-	},
-	view = {
-		entries = 'native',
 	},
 	formatting = {
 		format = lspkind.cmp_format({
@@ -59,12 +59,28 @@ cmp.setup({
 		{ name = 'spell' },
 		{ name = 'cmdline' },
 	},
-	-- window = {
-	-- 	documentation = {
-	-- 		cmp.config.window.bordered()
-	-- 	},
-	-- },
 })
+
+-- cmp.setup.cmdline('/', {
+    -- mapping = cmp.mapping.preset.cmdline(),
+    -- sources = {
+        -- { name = 'buffer' }
+    -- }
+-- })
+-- 
+-- cmp.setup.cmdline(':', {
+    -- mapping = cmp.mapping.preset.cmdline(),
+    -- sources = cmp.config.sources({
+        -- { name = 'path' }
+    -- }, {
+        -- {
+            -- name = 'cmdline',
+            -- option = {
+                -- ignore_cmds = { 'Man', '!' }
+            -- }
+        -- }
+    -- })
+-- })
 
 local servers = {
     -- 'pyright',

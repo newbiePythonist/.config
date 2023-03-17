@@ -24,6 +24,7 @@ return require('packer').startup(function()
 			'hrsh7th/cmp-vsnip',
 			'hrsh7th/cmp-buffer',
 			'hrsh7th/cmp-path',
+			'hrsh7th/cmp-cmdline',
 			'onsails/lspkind.nvim',
 		}
 	}
@@ -37,6 +38,7 @@ return require('packer').startup(function()
 	}
 
     use 'justinmk/vim-dirvish'
+    use 'tpope/vim-surround'
     use 'windwp/nvim-autopairs'
     -- use 'sheerun/vim-polyglot'
 

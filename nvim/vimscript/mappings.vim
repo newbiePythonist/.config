@@ -1,25 +1,8 @@
-" netrw
-" fu! Explore()
-"     if getline(".")[col("$")-2] == "/"
-"         call feedkeys("\<cr>")
-"     else
-"         call feedkeys("\"fyy:rightb vsp \<C-r>f\<cr>\<C-w>l\<C-w>q")
-"     endif
-"     return ""
-" endfunction
-fu! BufferDelete()
-    call feedkeys(":b#|bd#")
-    call feedkeys("\<cr>")
-    return
-endfunction
-
 fu! VsplitDirvish()
     Dirvish
 endfunction
 
 " general improvements (search, ergonomics, easy netrw startup)
-" use :b#|bd# to avoid :Le to become fullscreen
-nmap <silent> <leader>q :silent! call BufferDelete()<cr>
 nmap <silent> <leader>e :call VsplitDirvish()<cr>
 " au FileType dirvish nmap <silent> <buffer> u -
 au FileType dirvish nmap <buffer> u -:exe "bw!" bufnr()-1 ""<cr>:e<cr>
@@ -37,8 +20,41 @@ au FileType dirvish nnoremap <silent> <buffer> dd "syy:silent! !rm -rf <C-r>s<cr
 au FileType dirvish nnoremap <buffer> yy "syy:silent! !cp -a <C-r>s 
 au FileType dirvish nnoremap <buffer> mv "syy:silent! !mv <C-r>s 
 
+" surrounding mappings
+fu! Surround()
+    let l:count = nr2char(getchar())
+    if l:count == "\"" || l:count == "'"
+        exe "norm! lbi" l:count. "\<esc>F xea" l:count. "\<esc>F x"
+        return
+    elseif l:count == "("
+        exe "norm! lbi" l:count. "\<esc>ea)\<esc>F x"
+        return
+    elseif l:count == "["
+        exe "norm! lbi" l:count. "\<esc>ea]\<esc>F x"
+        return
+    elseif l:count == "{"
+        exe "norm! lbi" l:count. "\<esc>ea}\<esc>F x"
+        return
+    endif
+    let l:text = nr2char(getchar()) 
+    if l:text == "\"" || l:text == "'"
+        exe "norm! l" l:count. "bi" l:text. "\<esc>" l:count. "ea" l:text. "\<esc>"
+        return
+    elseif l:text == "("
+        exe "norm! l" l:count. "bi" l:text. "\<esc>" l:count. "ea)\<esc>%hx"
+        return
+    elseif l:text == "["
+        exe "norm! l" l:count. "bi" l:text. "\<esc>" l:count. "ea]\<esc>%hx"
+        return
+    elseif l:text == "{"
+        exe "norm! l" l:count. "bi" l:text. "\<esc>" l:count. "ea}\<esc>%hx"
+        return
+    endif
+endf
+nnoremap <silent> <leader>s :call Surround()<cr>
+
 " Nvim built-in terminal
-nmap <silent> <leader>t :term<CR>:set nonu nornu<CR>i
+nmap <silent> <leader>t:(term)<CR>:set nonu nornu<CR>i
 tmap <Esc> <C-\><C-n>k$ " Making <esc> working inside the built-in term
 
 " run files

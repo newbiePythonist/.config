@@ -28,7 +28,7 @@ set.scrolloff = 22
 
 cmd [[
     " so ~/.config/nvim/colors/delek.vim
-    colo nightfly
+    colo zellner
     hi Comment gui=none
     so ~/.config/nvim/vimscript/mappings.vim
     so ~/.config/nvim/vimscript/autocmds.vim
