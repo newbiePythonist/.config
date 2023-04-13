@@ -2,6 +2,12 @@ fu! VsplitDirvish()
     Dirvish
 endfunction
 
+" tilde for wsl
+nmap <F8> ~
+imap <F8> ~
+cmap <F8> ~
+vmap <F8> ~
+
 " general improvements (search, ergonomics, easy netrw startup)
 nmap <silent> <leader>e :call VsplitDirvish()<cr>
 " au FileType dirvish nmap <silent> <buffer> u -
@@ -19,39 +25,6 @@ au FileType dirvish nnoremap <buffer> mk :silent! !mkdir
 au FileType dirvish nnoremap <silent> <buffer> dd "syy:silent! !rm -rf <C-r>s<cr>:call feedkeys("\<C-l>")<cr>
 au FileType dirvish nnoremap <buffer> yy "syy:silent! !cp -a <C-r>s 
 au FileType dirvish nnoremap <buffer> mv "syy:silent! !mv <C-r>s 
-
-" surrounding mappings
-fu! Surround()
-    let l:count = nr2char(getchar())
-    if l:count == "\"" || l:count == "'"
-        exe "norm! lbi" l:count. "\<esc>F xea" l:count. "\<esc>F x"
-        return
-    elseif l:count == "("
-        exe "norm! lbi" l:count. "\<esc>ea)\<esc>F x"
-        return
-    elseif l:count == "["
-        exe "norm! lbi" l:count. "\<esc>ea]\<esc>F x"
-        return
-    elseif l:count == "{"
-        exe "norm! lbi" l:count. "\<esc>ea}\<esc>F x"
-        return
-    endif
-    let l:text = nr2char(getchar()) 
-    if l:text == "\"" || l:text == "'"
-        exe "norm! l" l:count. "bi" l:text. "\<esc>" l:count. "ea" l:text. "\<esc>"
-        return
-    elseif l:text == "("
-        exe "norm! l" l:count. "bi" l:text. "\<esc>" l:count. "ea)\<esc>%hx"
-        return
-    elseif l:text == "["
-        exe "norm! l" l:count. "bi" l:text. "\<esc>" l:count. "ea]\<esc>%hx"
-        return
-    elseif l:text == "{"
-        exe "norm! l" l:count. "bi" l:text. "\<esc>" l:count. "ea}\<esc>%hx"
-        return
-    endif
-endf
-nnoremap <silent> <leader>s :call Surround()<cr>
 
 " Nvim built-in terminal
 nmap <silent> <leader>t:(term)<CR>:set nonu nornu<CR>i

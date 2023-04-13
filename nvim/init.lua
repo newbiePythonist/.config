@@ -27,9 +27,9 @@ set.lazyredraw=true
 set.scrolloff = 22
 
 cmd [[
-    " so ~/.config/nvim/colors/delek.vim
-    colo zellner
+    colo everforest
     hi Comment gui=none
+    so ~/.config/nvim/vimscript/tabLine.vim
     so ~/.config/nvim/vimscript/mappings.vim
     so ~/.config/nvim/vimscript/autocmds.vim
 
