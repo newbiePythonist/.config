@@ -16,9 +16,9 @@ au FileType dirvish nnoremap <silent> <buffer> <cr> :call dirvish#open("edit", 0
 au FileType dirvish nnoremap <silent> <buffer> e "syy<C-w>l:e <C-r>s<cr>"
 au BufNew,FileType dirvish silent! cd %
 au BufNew,FileType dirvish setl nornu
-" au FileType dirvish cnoremap <silent> <buffer> <cr> <cr>:redraw!<cr>:call feedkeys("\<C-l>")<cr>
-au FileType dirvish nnoremap <buffer> D /.*\/$<C-b>
-au FileType dirvish nnoremap <buffer> f /.*[^/]$<C-b>
+" au FileType dirvish nnoremap <buffer> D /.*\/$<C-b>
+au FileType dirvish nnoremap <buffer> D /\ze[^/]*[/]\=$<left>\/<C-b>
+au FileType dirvish nnoremap <buffer> f /\ze[^/]*[/]\=$<left>[^/]<C-b>
 " create, copy, move, rename, delete files/folders
 au FileType dirvish nnoremap <buffer> t :silent! !touch 
 au FileType dirvish nnoremap <buffer> mk :silent! !mkdir 

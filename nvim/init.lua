@@ -18,6 +18,7 @@ set.cursorline = true
 set.termguicolors = true
 set.incsearch = true
 set.showcmd = true
+-- set.swapfile = false
 set.wrap = false
 set.hlsearch = false
 set.ttimeoutlen = 0
