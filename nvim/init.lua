@@ -30,9 +30,10 @@ set.scrolloff = 22
 cmd [[
     colo everforest
     hi Comment gui=none
-    so ~/.config/nvim/vimscript/tabLine.vim
-    so ~/.config/nvim/vimscript/mappings.vim
     so ~/.config/nvim/vimscript/autocmds.vim
+    so ~/.config/nvim/vimscript/customFunctions.vim
+    so ~/.config/nvim/vimscript/mappings.vim
+    so ~/.config/nvim/vimscript/tabLine.vim
 
 	set guicursor=a:block-Cursor
 	set signcolumn=no
