@@ -39,7 +39,6 @@ return require('packer').startup(function()
 		}
 	}
 
-    use { 'm00qek/baleia.nvim', tag = 'v1.3.0' }
     use 'justinmk/vim-dirvish'
     use 'tpope/vim-surround'
     use 'windwp/nvim-autopairs'
