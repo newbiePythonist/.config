@@ -14,6 +14,8 @@ return require('packer').startup(function()
         'vim-scripts/mars.vim'
     }
 
+    use 'junegunn/fzf.vim'
+
     -- completion + snippets
 	use {
 		'hrsh7th/nvim-cmp',
@@ -37,6 +39,7 @@ return require('packer').startup(function()
 		}
 	}
 
+    use { 'm00qek/baleia.nvim', tag = 'v1.3.0' }
     use 'justinmk/vim-dirvish'
     use 'tpope/vim-surround'
     use 'windwp/nvim-autopairs'

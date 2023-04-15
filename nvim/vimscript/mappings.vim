@@ -14,7 +14,7 @@ nmap <silent> <leader>e :call VsplitDirvish()<cr>
 au FileType dirvish nmap <buffer> u -:exe "bw!" bufnr()-1 ""<cr>:e<cr>
 au FileType dirvish nnoremap <silent> <buffer> <cr> :call dirvish#open("edit", 0)<cr>:exe "bw!" bufnr()-1 ""<cr>:e<cr>
 au FileType dirvish nnoremap <silent> <buffer> e "syy<C-w>l:e <C-r>s<cr>"
-au BufNew,FileType dirvish silent! cd %
+" au BufNew,FileType dirvish silent! cd %
 au BufNew,FileType dirvish setl nornu
 " au FileType dirvish nnoremap <buffer> D /.*\/$<C-b>
 au FileType dirvish nnoremap <buffer> D /\ze[^/]*[/]\=$<left>\/<C-b>
