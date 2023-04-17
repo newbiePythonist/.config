@@ -23,6 +23,7 @@ set.wrap = false
 set.hlsearch = false
 set.ttimeoutlen = 0
 set.timeoutlen = 500
+set.wildmode = 'longest,list'
 set.completeopt = 'menu,menuone,noselect'
 set.lazyredraw=true
 set.scrolloff = 22

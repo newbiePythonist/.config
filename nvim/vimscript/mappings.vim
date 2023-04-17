@@ -52,3 +52,6 @@ au FileType lua vmap <silent> <buffer> <leader>u ml:norm _3x<cr>:set virtualedit
 
 " mappings for regexp
 cnoremap <C-g> \(\)<left><left>
+
+" mappings for cmdline mode
+cmap <C-s> ")<C-b><right><backspace>echo Sys("<cr>

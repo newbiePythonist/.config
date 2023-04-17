@@ -15,6 +15,7 @@ return require('packer').startup(function()
     }
 
     use 'junegunn/fzf.vim'
+    use 'junegunn/fzf'
 
     -- completion + snippets
 	use {
