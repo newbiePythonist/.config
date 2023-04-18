@@ -55,3 +55,7 @@ cnoremap <C-g> \(\)<left><left>
 
 " mappings for cmdline mode
 cmap <C-s> ")<C-b><right><backspace>echo Sys("<cr>
+
+
+command -complete=customlist,Find -bang -nargs=1 FuzzyFind edit<bang> <args>
+nmap <leader>ff :FuzzyFind 

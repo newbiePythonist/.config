@@ -23,13 +23,14 @@ set.wrap = false
 set.hlsearch = false
 set.ttimeoutlen = 0
 set.timeoutlen = 500
-set.wildmode = 'longest,list'
+-- set.wildmode = 'longest,list'
+-- set.path = '**,.*'
 set.completeopt = 'menu,menuone,noselect'
-set.lazyredraw=true
+set.lazyredraw = true
 set.scrolloff = 22
 
 cmd [[
-    " colo everforest
+    colo everforest
     hi Comment gui=none
     so ~/.config/nvim/vimscript/autocmds.vim
     so ~/.config/nvim/vimscript/customFunctions.vim
