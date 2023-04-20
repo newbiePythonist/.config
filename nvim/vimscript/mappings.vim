@@ -1,7 +1,3 @@
-fu! VsplitDirvish()
-    Dirvish
-endfunction
-
 " tilde for wsl
 nmap <F8> ~
 imap <F8> ~
@@ -9,7 +5,7 @@ cmap <F8> ~
 vmap <F8> ~
 
 " general improvements (search, ergonomics, easy netrw startup)
-nmap <silent> <leader>e :call VsplitDirvish()<cr>
+nmap <silent> <leader>e :Dirvish<cr>
 " au FileType dirvish nmap <silent> <buffer> u -
 au FileType dirvish nmap <buffer> u -:exe "bw!" bufnr()-1 ""<cr>:e<cr>
 au FileType dirvish nnoremap <silent> <buffer> <cr> :call dirvish#open("edit", 0)<cr>:exe "bw!" bufnr()-1 ""<cr>:e<cr>
@@ -56,6 +52,6 @@ cnoremap <C-g> \(\)<left><left>
 " mappings for cmdline mode
 cmap <C-s> ")<C-b><right><backspace>echo Sys("<cr>
 
-
-command -complete=customlist,Find -bang -nargs=1 FuzzyFind edit<bang> <args>
-nmap <leader>ff :FuzzyFind 
+command -complete=customlist,Find -bang -nargs=1 FuzzyFind edit<bang> <args>|silent! exe "silent! cd " . cwd
+command -complete=file -nargs=* Cd call Cd(<f-args>)
+nnoremap <leader>ff :let g:cwd=getcwd()<cr>:call FuzzyFindMaps()<cr>:Cd 

@@ -37,13 +37,13 @@ cmd [[
     so ~/.config/nvim/vimscript/mappings.vim
     so ~/.config/nvim/vimscript/tabLine.vim
 
-	set guicursor=a:block-Cursor
-	set signcolumn=no
-	set inccommand=nosplit
+    set guicursor=a:block-Cursor
+    set signcolumn=no
+    set inccommand=nosplit
 ]]
 
--- vim dirvish 
-cmd [[ let g:dirvish_mode = ':sort ,^.*[\/],']]
+-- dirvish settings
+cmd [[ let g:dirvish_mode = ':sort ,^.*[\/],' ]]
 g.dirvish_relative_path = 1
 
 -- netrw settings

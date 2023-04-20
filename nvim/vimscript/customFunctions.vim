@@ -10,5 +10,33 @@ fu! Fuzzy()
 endf
 
 fu! Find(A,L,P)
-    return split(Sys("fd -H -tf --full-path | grep " . a:A), "\n")
+    if a:A =~ "/"
+        return split(Sys("fd -H -tf | grep " . a:A), "\n")
+    else   
+        return split(Sys("fd -H -tf -g " . a:A), "\n")
+    endif
+endf
+
+fu! Cd(path = ".")
+    if a:path != "."
+        exe "cd " . a:path
+        return
+    endif
+    cd .
+endf
+
+fu! FuzzyFindMaps()
+    cnoremap <space> <cr>:silent! call Cr()<cr>:FuzzyFind 
+    fu! Unmap()
+        cnoremap <space> <space>
+        cnoremap <cr> <cr>
+        cnoremap <C-c> <C-c>
+        cnoremap <Esc> <Esc>
+    endf
+    cnoremap <C-c> <C-c>:silent! call Unmap()<cr><cr>
+    cnoremap <Esc> <Esc>:silent! call Unmap()<cr><cr>
+    fu! Cr()
+        cnoremap <space> <space>
+        cnoremap <silent> <cr> <cr>:silent! call Unmap()<cr><cr>
+    endf
 endf
