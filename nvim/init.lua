@@ -30,7 +30,7 @@ set.lazyredraw = true
 set.scrolloff = 22
 
 cmd [[
-    colo everforest
+    colo dogrun
     hi Comment gui=none
     so ~/.config/nvim/vimscript/autocmds.vim
     so ~/.config/nvim/vimscript/customFunctions.vim
