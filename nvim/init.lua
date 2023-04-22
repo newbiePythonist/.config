@@ -18,16 +18,16 @@ set.cursorline = true
 set.termguicolors = true
 set.incsearch = true
 set.showcmd = true
--- set.swapfile = false
 set.wrap = false
 set.hlsearch = false
 set.ttimeoutlen = 0
 set.timeoutlen = 500
--- set.wildmode = 'longest,list'
--- set.path = '**,.*'
 set.completeopt = 'menu,menuone,noselect'
 set.lazyredraw = true
 set.scrolloff = 22
+-- set.wildmode = 'longest,list'
+-- set.path = '**,.*'
+-- set.swapfile = false
 
 cmd [[
     colo dogrun

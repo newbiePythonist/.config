@@ -11,12 +11,12 @@ endfu
 
 fu! ToDefinition(funcname)
     let l:keyword = input("Func definition keyword: ")
-    let l:ft = &ft
+    " let l:ft = &ft
     " let l:rawDef = Sys("grep -nr " . keyword . "'.*" . a:funcname . "(' | head -n 1 | sed 's/\\(^[^:]*\\):\\([0-9]*\\)/\\2 \\1/'")
     " let l:filename = substitute(rawDef, "^\\d* \\|:.*", "", "g")
     " let l:linenr = substitute(rawDef, "\\(^\\d*\\).*", "\\1", "")
 
-    let l:rawDef = Sys("rg -. --no-heading -t " . ft . " -ne '" . keyword . ".*" . a:funcname . "\\(' | head -n 1 | sed 's/\\(^[^:]*\\):\\([0-9]*\\)/\\2 \\1/'")
+    let l:rawDef = Sys("rg -. --no-heading -t " . &ft . " -ne '" . keyword . ".*" . a:funcname . "\\(' | head -n 1 | sed 's/\\(^[^:]*\\):\\([0-9]*\\)/\\2 \\1/'")
     let l:filename = substitute(rawDef, "^\\d* \\|:.*", "", "g")
     let l:linenr = substitute(rawDef, "\\(^\\d*\\).*", "\\1", "")
 
@@ -42,13 +42,14 @@ endfu
 
 fu! FuzzyFindMaps()
     cnoremap <space> <cr>:silent! call Cr()<cr>:FuzzyFind 
-    cnoremap <C-c> <C-c>:silent! call Unmap()<cr><cr>
-    cnoremap <Esc> <C-c>:silent! call Unmap()<cr><cr>
+    cnoremap <silent> <C-c> <C-c>:silent! call Unmap()<cr><cr>
+    cnoremap <silent> <Esc> <C-c>:silent! call Unmap()<cr><cr>
     fu! Cr()
         cnoremap <space> <space>
         cnoremap <silent> <cr> <cr>:silent! call Unmap()<cr><cr>
     endfu
     fu! Unmap()
+        exe "cd " . g:cwd
         exe "cunmap <Esc>"
         cnoremap <space> <space>
         cnoremap <cr> <cr>
