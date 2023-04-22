@@ -4,6 +4,8 @@ imap <F8> ~
 cmap <F8> ~
 vmap <F8> ~
 
+nmap <leader>gd :call ToDefinition("<C-r><C-w>")
+
 " general improvements (search, ergonomics, easy netrw startup)
 nmap <silent> <leader>e :Dirvish<cr>
 " au FileType dirvish nmap <silent> <buffer> u -
@@ -52,6 +54,6 @@ cnoremap <C-g> \(\)<left><left>
 " mappings for cmdline mode
 cmap <C-s> ")<C-b><right><backspace>echo Sys("<cr>
 
-command -complete=customlist,Find -bang -nargs=1 FuzzyFind edit<bang> <args>|silent! exe "silent! cd " . cwd
-command -complete=file -nargs=* Cd call Cd(<f-args>)
+command! -complete=customlist,Find -bang -nargs=1 FuzzyFind edit<bang> <args>|silent! exe "silent! cd " . cwd
+command! -complete=file -nargs=* Cd call Cd(<f-args>)
 nnoremap <leader>ff :let g:cwd=getcwd()<cr>:call FuzzyFindMaps()<cr>:Cd 
