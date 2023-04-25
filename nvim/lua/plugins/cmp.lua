@@ -83,12 +83,14 @@ cmp.setup({
 -- })
 
 local servers = {
-    -- 'pyright',
     'jedi_language_server', -- pip3 install jedi jedi_language_server
-    'bashls',
     'lua_ls',
-    -- 'vimls',
-    -- 'sumneko_lua',
+    'html',
+    'cssls',
+    'intelephense',
+    'tsserver',
+    -- 'bashls',
+    -- 'pyright',
 }
 
 for _,server in ipairs(servers) do
