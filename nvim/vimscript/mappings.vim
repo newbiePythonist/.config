@@ -20,8 +20,8 @@ au FileType dirvish nnoremap <buffer> f /\ze[^/]*[/]\=$<left>[^/]<C-b>
 " create, copy, move, rename, delete files/folders
 au FileType dirvish nnoremap <buffer> t :silent! !touch 
 au FileType dirvish nnoremap <buffer> mk :silent! !mkdir 
-au FileType dirvish nnoremap <silent> <buffer> dd "syy:silent! !rm -rf <C-r>s<cr>:call feedkeys("\<C-l>")<cr>
 au FileType dirvish nnoremap <buffer> yy "syy:silent! !cp -a <C-r>s 
+au FileType dirvish nnoremap <silent> <buffer> dd "syy:silent! !rm -rf <C-r>s<cr>:call feedkeys("\<C-l>")<cr>
 au FileType dirvish nnoremap <buffer> mv "syy:silent! !mv <C-r>s 
 
 " Nvim built-in terminal
