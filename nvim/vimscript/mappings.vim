@@ -55,5 +55,7 @@ cnoremap <C-g> \(\)<left><left>
 cmap <C-s> ")<C-b><right><backspace>echo Sys("<cr>
 
 command! -complete=customlist,Find -bang -nargs=1 FuzzyFind edit<bang> <args>|silent! exe "silent! cd " . cwd
-command! -complete=file -nargs=* Cd call Cd(<f-args>)
-nnoremap <leader>ff :let g:cwd=getcwd()<cr>:call FuzzyFindMaps()<cr>:Cd 
+nnoremap <leader>ff :FuzzyFind 
+
+cmap <c-n> <Plug>CmdlineCompleteForward
+cmap <c-p> <Plug>CmdlineCompleteBackward

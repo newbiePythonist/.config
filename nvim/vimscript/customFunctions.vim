@@ -25,34 +25,9 @@ fu! ToDefinition(funcname)
 endfu
 
 fu! Find(A,L,P)
-    if a:A =~ "/"
+    if a:A =~ "/" || a:A =~ "$" || a:A =~ "\\"
         return split(Sys("fd -H -tf | grep " . a:A), "\n")
     else   
         return split(Sys("fd -H -tf -g " . a:A), "\n")
     endif
-endfu
-
-fu! Cd(path = ".")
-    if a:path != "."
-        exe "cd " . a:path
-        return
-    endif
-    cd .
-endfu
-
-fu! FuzzyFindMaps()
-    cnoremap <space> <cr>:silent! call Cr()<cr>:FuzzyFind 
-    cnoremap <silent> <C-c> <C-c>:silent! call Unmap()<cr><cr>
-    cnoremap <silent> <Esc> <C-c>:silent! call Unmap()<cr><cr>
-    fu! Cr()
-        cnoremap <space> <space>
-        cnoremap <silent> <cr> <cr>:silent! call Unmap()<cr><cr>
-    endfu
-    fu! Unmap()
-        exe "cd " . g:cwd
-        exe "cunmap <Esc>"
-        cnoremap <space> <space>
-        cnoremap <cr> <cr>
-        cnoremap <C-c> <C-c>
-    endfu
 endfu

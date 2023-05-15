@@ -44,6 +44,7 @@ return require('packer').startup(function()
     use 'justinmk/vim-dirvish'
     use 'tpope/vim-surround'
     use 'windwp/nvim-autopairs'
+    use 'j5shi/CommandlineComplete.vim'
     -- use 'sheerun/vim-polyglot'
 
 end)
