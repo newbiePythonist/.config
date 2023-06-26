@@ -9,6 +9,7 @@ fu! Fuzzy()
     nnoremap <buffer> <cr> gf:bd! #<cr>
 endfu
 
+" ripgrep function to delete (indentation issues due to py filetype instead of python)
 fu! ToDefinition(funcname)
     let l:keyword = input("Func definition keyword: ")
     " let l:ft = &ft

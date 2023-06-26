@@ -7,7 +7,3 @@ au BufWrite,BufWritePre,BufWritePost * call delete(swapname("%"))
 au VimEnter luafile ~/.config/nvim/lua/resetLspSyntax.lua
 au ColorScheme * luafile ~/.config/nvim/lua/resetLspSyntax.lua
 au ColorScheme * hi Comment gui=none|hi CursorLine gui=none
-
-" ft compatibiliy with ripgrep
-au FileType python set ft=py|set syntax=python
-au FileType javascript set ft=js|set syntax=javascript
