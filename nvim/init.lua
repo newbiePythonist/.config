@@ -14,6 +14,7 @@ set.rnu = true
 set.shiftwidth = 4
 set.tabstop = 4
 set.expandtab = true
+set.smartindent = true
 set.cursorline = true
 set.termguicolors = true
 set.incsearch = true
