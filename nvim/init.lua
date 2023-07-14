@@ -36,7 +36,7 @@ cmd [[
     so ~/.config/nvim/vimscript/mappings.vim
     so ~/.config/nvim/vimscript/tabLine.vim
 
-    colo ayu
+    colo nightfly
     luafile ~/.config/nvim/lua/resetLspSyntax.lua
     hi Comment gui=none
     hi CursorLine gui=none
