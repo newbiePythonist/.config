@@ -36,10 +36,15 @@ cmd [[
     so ~/.config/nvim/vimscript/mappings.vim
     so ~/.config/nvim/vimscript/tabLine.vim
 
+<<<<<<< HEAD
     colo nightfly
+=======
+    colo zellner
+>>>>>>> 253b729 (uninstalling termux for clean installation)
     luafile ~/.config/nvim/lua/resetLspSyntax.lua
     hi Comment gui=none
     hi CursorLine gui=none
+    hi Cursor guibg=grey60
 
     set guicursor=a:block-Cursor
     set signcolumn=no

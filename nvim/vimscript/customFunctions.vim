@@ -32,3 +32,16 @@ fu! Find(A,L,P)
         return split(Sys("fd -H -tf -g " . a:A), "\n")
     endif
 endfu
+
+fu! PyCompleteArgs()
+    let g:args=split(substitute(getline('.'), '.*(\|):$', '', 'g'), ', ')
+    if g:args[0] =~ 'self'
+        call remove(g:args, 0)
+    endif
+
+    for i in range(len(g:args))
+        let g:args[i] = substitute(g:args[i], '\(\w*\)', '\t\tself.\1 = \1', '')
+    endfor
+    put=g:args
+    norm! =()
+endfu

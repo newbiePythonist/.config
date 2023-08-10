@@ -1,0 +1,9 @@
+function globExpand() {
+CURRENTWORD="${LBUFFER/* /}${RBUFFER/ */}"
+echo
+ls -1d $(ls -1d $~CURRENTWORD | sed "/:$\|^$/d")
+zle redisplay
+}
+
+zle -N globExpand
+bindkey "^K" globExpand
