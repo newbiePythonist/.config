@@ -31,7 +31,6 @@ set.scrolloff = 22
 -- set.swapfile = false
 
 cmd [[
-    so ~/.config/nvim/vimscript/autocmds.vim
     so ~/.config/nvim/vimscript/customFunctions.vim
     so ~/.config/nvim/vimscript/mappings.vim
     so ~/.config/nvim/vimscript/tabLine.vim
@@ -45,11 +44,13 @@ cmd [[
     set guicursor=a:block-Cursor
     set signcolumn=no
     set inccommand=nosplit
+    so ~/.config/nvim/vimscript/autocmds.vim
 ]]
 
 -- dirvish settings
 cmd [[ let g:dirvish_mode = ':sort ,^.*[\/],' ]]
 g.dirvish_relative_path = 1
+g.loaded_netrwPlugin = 1
 
 -- netrw settings
 g.netrw_banner = 0
