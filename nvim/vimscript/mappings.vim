@@ -26,7 +26,7 @@ au FileType dirvish nnoremap <buffer> mv "syy:silent! !mv <C-r>s
 au FileType dirvish nnoremap <silent> <buffer> dd "syy:silent! !rm -rf <C-r>s<cr>
 
 " Nvim built-in terminal
-nmap <silent> <leader>t:(term)<CR>:set nonu nornu<CR>i
+nmap <silent> <leader>t :term<CR>:set nonu nornu<CR>i
 tmap <Esc> <C-\><C-n>k$ " Making <esc> working inside the built-in term
 
 " run files
