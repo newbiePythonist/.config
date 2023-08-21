@@ -10,8 +10,8 @@ nmap <silent> <leader>gd :silent! call ToDefinition("<C-r><C-w>")<cr>
 nmap <silent> <leader>e :Dirvish<cr>
 " au FileType dirvish nmap <silent> <buffer> u -:silent! exe "bw!" bufnr()-1 ""<cr>:silent e<cr>
 " au FileType dirvish nnoremap <silent> <buffer> <cr> :silent call dirvish#open("edit", 0)<cr>:silent! exe "bw!" bufnr()-1 ""<cr>:silent e<cr>
-au FileType dirvish nmap <silent> <buffer> u :let g:last_dirvish_buffer=buffer_name()<cr>-:exe 'bw' .g:last_dirvish_buffer<cr>:e<cr>
-au FileType dirvish nnoremap <silent> <buffer> <cr> :let g:last_dirvish_buffer=buffer_name()<cr>:silent call dirvish#open("edit", 0)<cr>:exe 'bw!' .g:last_dirvish_buffer<cr>:e<cr>
+au FileType dirvish nmap <silent> <buffer> u :let g:last_dirvish_buffer=bufnr()<cr>-:exe 'bw' .g:last_dirvish_buffer<cr>:e<cr>
+au FileType dirvish nnoremap <silent> <buffer> <cr> :let g:last_dirvish_buffer=bufnr()<cr>:silent call dirvish#open("edit", 0)<cr>:exe 'bw!' .g:last_dirvish_buffer<cr>:e<cr>
 au FileType dirvish nnoremap <silent> <buffer> e "syy<C-w>l:e <C-r>s<cr>"
 " au BufNew,FileType dirvish silent! cd %
 au BufNew,FileType dirvish setl nornu
