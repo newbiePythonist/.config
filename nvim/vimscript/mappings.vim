@@ -8,9 +8,10 @@ nmap <silent> <leader>gd :silent! call ToDefinition("<C-r><C-w>")<cr>
 
 " general improvements (search, ergonomics, easy netrw startup)
 nmap <silent> <leader>e :Dirvish<cr>
-" au FileType dirvish nmap <silent> <buffer> u -
-au FileType dirvish nmap <buffer> u -:exe "bw!" bufnr()-1 ""<cr>:e<cr>
-au FileType dirvish nnoremap <silent> <buffer> <cr> :call dirvish#open("edit", 0)<cr>:exe "bw!" bufnr()-1 ""<cr>:e<cr>
+" au FileType dirvish nmap <silent> <buffer> u -:silent! exe "bw!" bufnr()-1 ""<cr>:silent e<cr>
+" au FileType dirvish nnoremap <silent> <buffer> <cr> :silent call dirvish#open("edit", 0)<cr>:silent! exe "bw!" bufnr()-1 ""<cr>:silent e<cr>
+au FileType dirvish nmap <silent> <buffer> u :let g:last_dirvish_buffer=buffer_name()<cr>-:exe 'bw' .g:last_dirvish_buffer<cr>:e<cr>
+au FileType dirvish nnoremap <silent> <buffer> <cr> :let g:last_dirvish_buffer=buffer_name()<cr>:silent call dirvish#open("edit", 0)<cr>:exe 'bw!' .g:last_dirvish_buffer<cr>:e<cr>
 au FileType dirvish nnoremap <silent> <buffer> e "syy<C-w>l:e <C-r>s<cr>"
 " au BufNew,FileType dirvish silent! cd %
 au BufNew,FileType dirvish setl nornu
@@ -21,8 +22,8 @@ au FileType dirvish nnoremap <buffer> f /\ze[^/]*[/]\=$<left>[^/]<C-b>
 au FileType dirvish nnoremap <buffer> t :silent! !touch 
 au FileType dirvish nnoremap <buffer> mk :silent! !mkdir 
 au FileType dirvish nnoremap <buffer> yy "syy:silent! !cp -a <C-r>s 
-au FileType dirvish nnoremap <silent> <buffer> dd "syy:silent! !rm -rf <C-r>s<cr>:call feedkeys("\<C-l>")<cr>
 au FileType dirvish nnoremap <buffer> mv "syy:silent! !mv <C-r>s 
+au FileType dirvish nnoremap <silent> <buffer> dd "syy:silent! !rm -rf <C-r>s<cr>
 
 " Nvim built-in terminal
 nmap <silent> <leader>t:(term)<CR>:set nonu nornu<CR>i

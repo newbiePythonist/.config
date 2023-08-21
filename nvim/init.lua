@@ -26,7 +26,7 @@ set.timeoutlen = 500
 set.completeopt = 'menu,menuone,noselect'
 set.lazyredraw = true
 set.scrolloff = 22
--- set.wildmode = 'longest,list'
+set.wildmode = 'full:longest'
 -- set.path = '**,.*'
 -- set.swapfile = false
 

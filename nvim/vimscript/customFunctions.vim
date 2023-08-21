@@ -12,10 +12,6 @@ endfu
 " ripgrep function to delete (indentation issues due to py filetype instead of python)
 fu! ToDefinition(funcname)
     let l:keyword = input("Func definition keyword: ")
-    " let l:ft = &ft
-    " let l:rawDef = Sys("grep -nr " . keyword . "'.*" . a:funcname . "(' | head -n 1 | sed 's/\\(^[^:]*\\):\\([0-9]*\\)/\\2 \\1/'")
-    " let l:filename = substitute(rawDef, "^\\d* \\|:.*", "", "g")
-    " let l:linenr = substitute(rawDef, "\\(^\\d*\\).*", "\\1", "")
 
     let l:rawDef = Sys("rg -. --no-heading -t " . &ft . " -ne '" . keyword . ".*" . a:funcname . "\\(' | head -n 1 | sed 's/\\(^[^:]*\\):\\([0-9]*\\)/\\2 \\1/'")
     let l:filename = substitute(rawDef, "^\\d* \\|:.*", "", "g")
