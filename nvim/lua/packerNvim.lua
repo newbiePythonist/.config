@@ -11,7 +11,6 @@ return require('packer').startup(function()
         'sainnhe/edge',
         'arzg/vim-colors-xcode',
         'frenzyexists/aquarium-vim',
-        'vim-scripts/mars.vim',
         'ayu-theme/ayu-vim',
     }
 
@@ -41,7 +40,8 @@ return require('packer').startup(function()
 		}
 	}
 
-    use 'justinmk/vim-dirvish'
+    -- use 'justinmk/vim-dirvish'
+    use 'nvim-tree/nvim-tree.lua'
     use 'tpope/vim-surround'
     use 'windwp/nvim-autopairs'
     use 'j5shi/CommandlineComplete.vim'

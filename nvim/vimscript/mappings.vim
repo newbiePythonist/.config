@@ -14,16 +14,15 @@ au FileType dirvish nmap <silent> <buffer> u :let g:last_dirvish_buffer=bufnr()<
 au FileType dirvish nnoremap <silent> <buffer> <cr> :let g:last_dirvish_buffer=bufnr()<cr>:silent call dirvish#open("edit", 0)<cr>:exe 'bw!' .g:last_dirvish_buffer<cr>:e<cr>
 au FileType dirvish nnoremap <silent> <buffer> e "syy<C-w>l:e <C-r>s<cr>"
 " au BufNew,FileType dirvish silent! cd %
-au BufNew,FileType dirvish setl nornu
 " au FileType dirvish nnoremap <buffer> D /.*\/$<C-b>
 au FileType dirvish nnoremap <buffer> D /\ze[^/]*[/]\=$<left>\/<C-b>
 au FileType dirvish nnoremap <buffer> f /\ze[^/]*[/]\=$<left>[^/]<C-b>
 " create, copy, move, rename, delete files/folders
 au FileType dirvish nnoremap <buffer> t :silent! !touch 
 au FileType dirvish nnoremap <buffer> mk :silent! !mkdir 
-au FileType dirvish nnoremap <buffer> yy "syy:silent! !cp -a <C-r>s 
+au FileType dirvish nnoremap <buffer> cp "syy:silent! !cp -a <C-r>s 
 au FileType dirvish nnoremap <buffer> mv "syy:silent! !mv <C-r>s 
-au FileType dirvish nnoremap <silent> <buffer> dd "syy:silent! !rm -rf <C-r>s<cr>
+au FileType dirvish nnoremap <silent> <buffer> rm "syy:silent! !rm -rf <C-r>s<cr>
 
 " Nvim built-in terminal
 nmap <silent> <leader>t :term<CR>:set nonu nornu<CR>i
@@ -60,3 +59,9 @@ nnoremap <leader>ff :FuzzyFind
 
 cmap <c-n> <Plug>CmdlineCompleteForward
 cmap <c-p> <Plug>CmdlineCompleteBackward
+
+" nvim-tree.lua file explorer
+nmap <silent> <leader>e :NvimTreeToggle<cr>
+
+" temporary mapping for the new file exolorer
+" nmap <silent> <leader>e :enew<cr>:setl ft=explorer<cr>:r !ls -adF *<cr>gg"_dd:so ~/.config/nvim/vimscript/explorer.vim<cr>:call SortFiles()<cr>

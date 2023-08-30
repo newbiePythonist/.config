@@ -34,6 +34,7 @@ cmd [[
     so ~/.config/nvim/vimscript/customFunctions.vim
     so ~/.config/nvim/vimscript/mappings.vim
     so ~/.config/nvim/vimscript/tabLine.vim
+    so ~/.config/nvim/vimscript/autocmds.vim
 
     colo zellner
     luafile ~/.config/nvim/lua/resetLspSyntax.lua
@@ -44,17 +45,17 @@ cmd [[
     set guicursor=a:block-Cursor
     set signcolumn=no
     set inccommand=nosplit
-    so ~/.config/nvim/vimscript/autocmds.vim
+    set shell+=\ -O\ globstar\ -O\ dotglob
 ]]
 
 -- dirvish settings
-cmd [[ let g:dirvish_mode = ':sort ,^.*[\/],' ]]
-g.dirvish_relative_path = 1
-g.loaded_netrwPlugin = 1
+g.dirvish_relative_path = 0
+g.dirvish_mode = ':sort ,^.*[\\/],'
+-- g.loaded_netrwPlugin = 1
 
 -- netrw settings
 g.netrw_banner = 0
-g.netrw_liststyle = 0
+g.netrw_liststyle = 3
 g.netrw_keepdir = 0
 g.netrw_winsize = 25
 
@@ -62,7 +63,8 @@ g.netrw_winsize = 25
 g.move_key_modifier = 'C'
 g.move_key_modifier_visualmode = 'C'
 
-require('addons')
+require('packerNvim')
 require('plugins.cmp')
 require('plugins.lspkind')
 require('plugins.autopairs')
+require('plugins.nvimTree')

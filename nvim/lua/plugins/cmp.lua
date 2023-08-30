@@ -83,14 +83,14 @@ cmp.setup({
 -- })
 
 local servers = {
-    'jedi_language_server', -- pip3 install jedi jedi_language_server | apt install python3-jedi
+    -- 'jedi_language_server', -- pip3 install jedi jedi_language_server | apt install python3-jedi
+    'pyright',
     'lua_ls',
     'html',
     'cssls',
     'intelephense',
     'tsserver',
     -- 'bashls',
-    -- 'pyright',
 }
 
 for _,server in ipairs(servers) do
