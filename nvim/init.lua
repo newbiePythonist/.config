@@ -36,7 +36,6 @@ cmd [[
     so ~/.config/nvim/vimscript/mappings.vim
     so ~/.config/nvim/vimscript/tabLine.vim
 
-    colo edge
     luafile ~/.config/nvim/lua/resetLspSyntax.lua
     hi Comment gui=none
     hi CursorLine gui=none
@@ -75,3 +74,5 @@ require('plugins.cmp')
 require('plugins.lspkind')
 require('plugins.autopairs')
 require('plugins.nvimTree')
+
+cmd [[ colo edge ]]
