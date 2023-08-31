@@ -31,12 +31,12 @@ set.wildmode = 'full:longest'
 -- set.swapfile = false
 
 cmd [[
+    so ~/.config/nvim/vimscript/autocmds.vim
     so ~/.config/nvim/vimscript/customFunctions.vim
     so ~/.config/nvim/vimscript/mappings.vim
     so ~/.config/nvim/vimscript/tabLine.vim
-    so ~/.config/nvim/vimscript/autocmds.vim
 
-    colo zellner
+    colo edge
     luafile ~/.config/nvim/lua/resetLspSyntax.lua
     hi Comment gui=none
     hi CursorLine gui=none
@@ -51,7 +51,6 @@ cmd [[
 -- dirvish settings
 g.dirvish_relative_path = 0
 g.dirvish_mode = ':sort ,^.*[\\/],'
--- g.loaded_netrwPlugin = 1
 
 -- netrw settings
 g.netrw_banner = 0
@@ -63,7 +62,15 @@ g.netrw_winsize = 25
 g.move_key_modifier = 'C'
 g.move_key_modifier_visualmode = 'C'
 
-require('packerNvim')
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  -- bootstrap lazy.nvim
+  -- stylua: ignore
+  vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable", lazypath })
+end
+vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
+
+require('lazyNvim')
 require('plugins.cmp')
 require('plugins.lspkind')
 require('plugins.autopairs')
