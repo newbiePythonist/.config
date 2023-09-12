@@ -24,13 +24,16 @@ set.hlsearch = false
 set.ttimeoutlen = 0
 set.timeoutlen = 500
 set.completeopt = 'menu,menuone,noselect'
+cmd [[ set shortmess+=c  ]]
 set.lazyredraw = true
 set.scrolloff = 22
 set.wildmode = 'full:longest'
+set.tagbsearch = false
 -- set.path = '**,.*'
 -- set.swapfile = false
 
 cmd [[
+    colo zellner
     so ~/.config/nvim/vimscript/autocmds.vim
     so ~/.config/nvim/vimscript/customFunctions.vim
     so ~/.config/nvim/vimscript/mappings.vim
@@ -51,6 +54,10 @@ cmd [[
 g.dirvish_relative_path = 0
 g.dirvish_mode = ':sort ,^.*[\\/],'
 
+-- mucomplete
+cmd [[ let g:apc_enable_ft = {'*':1}  ]]
+g.apc_min_length = 1
+
 -- netrw settings
 g.netrw_banner = 0
 g.netrw_liststyle = 3
@@ -63,16 +70,13 @@ g.move_key_modifier_visualmode = 'C'
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  -- bootstrap lazy.nvim
-  -- stylua: ignore
-  vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable", lazypath })
+    vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable", lazypath })
 end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 require('lazyNvim')
-require('plugins.cmp')
-require('plugins.lspkind')
+-- require('plugins.cmp')
+-- require('plugins.lspkind')
+require('plugins.lsp')
 require('plugins.autopairs')
 require('plugins.nvimTree')
-
-cmd [[ colo edge ]]

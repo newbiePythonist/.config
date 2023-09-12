@@ -1,6 +1,6 @@
-fu! Sys(arg1)
-    return substitute(system(a:arg1), ".*J", "", "")
-endfu
+" fu! Sys(arg1)
+"     return substitute(system(a:arg1), ".*J", "", "")
+" endfu
 
 fu! Fuzzy()
     enew
@@ -40,4 +40,23 @@ fu! PyCompleteArgs()
     endfor
     put=g:args
     norm! =()
+endfu
+
+fu! GoToTag()
+    " check if cursor is at end of line
+    if col('.')+1 == col('$')
+        norm! he
+    endif
+    " check if cursor is on "(
+    if getline('.')[col('.')-1] == '('
+        norm! h
+    else
+        norm! e
+    endif
+
+    if getline('.')[col('.')] == '('
+        exe 'tag '. expand('<cword>') . '('
+    else
+        exe 'tag '. expand('<cword>')
+    endif
 endfu

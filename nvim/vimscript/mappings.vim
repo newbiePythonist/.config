@@ -60,6 +60,9 @@ nnoremap <leader>ff :FuzzyFind
 cmap <c-n> <Plug>CmdlineCompleteForward
 cmap <c-p> <Plug>CmdlineCompleteBackward
 
+" tags
+nmap <C-]> :call GoToTag()<cr>
+
 " nvim-tree.lua file explorer
 nmap <silent> <leader>e :NvimTreeToggle<cr>
 
