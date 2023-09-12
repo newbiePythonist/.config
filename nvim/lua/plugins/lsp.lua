@@ -9,17 +9,19 @@ local servers = {
     -- 'bashls',
 }
 
+-- local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+-- capabilities.textDocument.completion.completionItem.snippetSupport = false
+
 for _,server in ipairs(servers) do
 	require('lspconfig')[server].setup {
-		on_attach = _G.lsp_on_attach,
         capabilities = {
             textDocument = {
                 completion = {
                     completionItem = {
                         snippetSupport = false,
-                    }
-                }
-            }
+                    },
+                },
+            },
         },
-	}
+    }
 end

@@ -18,11 +18,15 @@ require("lazy").setup({
     { 'junegunn/fzf' },
 
     -- completion + snippets
-    -- { 'hrsh7th/nvim-cmp' },
-    -- { 'hrsh7th/cmp-nvim-lsp' },
+    { 'hrsh7th/nvim-cmp' },
+    { 'hrsh7th/cmp-nvim-lsp' },
+
+    -- { 'L3MON4D3/LuaSnip' },
+    -- { 'saadparwaiz1/cmp_luasnip' },
+    --
     -- { 'hrsh7th/vim-vsnip' },
-    -- { 'rafamadriz/friendly-snippets' },
     -- { 'hrsh7th/cmp-vsnip' },
+    -- { 'rafamadriz/friendly-snippets' },
     -- { 'hrsh7th/cmp-buffer' },
     -- { 'hrsh7th/cmp-path' },
     -- { 'onsails/lspkind.nvim' },
@@ -32,7 +36,7 @@ require("lazy").setup({
     { 'neovim/nvim-lspconfig' },
     { 'williamboman/nvim-lsp-installer' },
 
-    { 'skywind3000/vim-auto-popmenu' },
+    -- { 'skywind3000/vim-auto-popmenu' },
     { 'nvim-tree/nvim-tree.lua' },
     { 'tpope/vim-surround' },
     { 'windwp/nvim-autopairs' },

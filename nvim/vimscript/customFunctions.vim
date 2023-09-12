@@ -60,3 +60,20 @@ fu! GoToTag()
         exe 'tag '. expand('<cword>')
     endif
 endfu
+
+fu! PopupMenu()
+    " don't trigger menu if line is empty
+    if match(getline(line('.')), '^\s*$') == 0
+        return ""
+    endif
+    " don't trigger menu if there's a space 1 before cursor
+    if getline('.')[col('.')-2] == ' '
+        return ""
+    endif
+    
+    " don't do nothing if popup is already visible
+    if pumvisible() == 0
+        call feedkeys("\<C-n>")
+        return ""
+    endif
+endfu
