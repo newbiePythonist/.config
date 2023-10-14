@@ -14,16 +14,13 @@ require("lazy").setup({
     { 'frenzyexists/aquarium-vim' },
     { 'ayu-theme/ayu-vim' },
 
+    -- fuzzy finder
     { 'junegunn/fzf.vim' },
     { 'junegunn/fzf' },
 
     -- completion + snippets
-    { 'hrsh7th/nvim-cmp' },
-    { 'hrsh7th/cmp-nvim-lsp' },
-
-    -- { 'L3MON4D3/LuaSnip' },
-    -- { 'saadparwaiz1/cmp_luasnip' },
-    --
+    -- { 'hrsh7th/nvim-cmp' },
+    -- { 'hrsh7th/cmp-nvim-lsp' },
     -- { 'hrsh7th/vim-vsnip' },
     -- { 'hrsh7th/cmp-vsnip' },
     -- { 'rafamadriz/friendly-snippets' },
@@ -33,10 +30,9 @@ require("lazy").setup({
     -- { 'hrsh7th/cmp-cmdline' }, don't enable
 
     -- lsp support
-    { 'neovim/nvim-lspconfig' },
-    { 'williamboman/nvim-lsp-installer' },
+    -- { 'neovim/nvim-lspconfig' },
+    -- { 'williamboman/nvim-lsp-installer' },
 
-    -- { 'skywind3000/vim-auto-popmenu' },
     { 'nvim-tree/nvim-tree.lua' },
     { 'tpope/vim-surround' },
     { 'windwp/nvim-autopairs' },

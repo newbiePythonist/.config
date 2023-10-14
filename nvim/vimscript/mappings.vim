@@ -4,6 +4,8 @@ imap <F8> ~
 cmap <F8> ~
 vmap <F8> ~
 
+imap <silent> jj <esc>
+
 nmap <silent> <leader>gd :silent! call ToDefinition("<C-r><C-w>")<cr>
 
 " general improvements (search, ergonomics, easy netrw startup)

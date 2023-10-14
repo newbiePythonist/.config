@@ -1,7 +1,3 @@
-" fu! Sys(arg1)
-"     return substitute(system(a:arg1), ".*J", "", "")
-" endfu
-
 fu! Fuzzy()
     enew
     read !find -type f
@@ -23,9 +19,9 @@ endfu
 
 fu! Find(A,L,P)
     if a:A =~ "/" || a:A =~ "$" || a:A =~ "\\"
-        return split(Sys("fd -H -tf | grep " . a:A), "\n")
+        return split(system('fd -H -tf | rg "' . a:A .'"'), "\n")
     else   
-        return split(Sys("fd -H -tf -g " . a:A), "\n")
+        return split(system("fd -H -tf -g " . a:A), "\n")
     endif
 endfu
 
@@ -49,13 +45,17 @@ fu! GoToTag()
     endif
     " check if cursor is on "(
     if getline('.')[col('.')-1] == '('
-        norm! h
-    else
-        norm! e
+        norm! 2h
+    endif
+    " make sure cursor is not on opening bracket
+    if getline('.')[col('.')-1] != '('
+        norm! he
     endif
 
+    " if char next to cursor is ( expand TAG+(
     if getline('.')[col('.')] == '('
         exe 'tag '. expand('<cword>') . '('
+    " if char next to cursor is not ( expand TAG
     else
         exe 'tag '. expand('<cword>')
     endif
@@ -64,16 +64,23 @@ endfu
 fu! PopupMenu()
     " don't trigger menu if line is empty
     if match(getline(line('.')), '^\s*$') == 0
-        return ""
+        let g:dont_complete = 0
+        return
     endif
     " don't trigger menu if there's a space 1 before cursor
     if getline('.')[col('.')-2] == ' '
-        return ""
+        let g:dont_complete = 0
+        return
     endif
-    
+    " don't trigger menu if 1 char before cursor there is not a word character or an underscore
+    if match(getline('.')[col('.')-2], '\w\|_')
+        return
+    endif
+
     " don't do nothing if popup is already visible
     if pumvisible() == 0
+        " call feedkeys("\<C-x>\<C-u>")
         call feedkeys("\<C-n>")
-        return ""
+        return
     endif
 endfu

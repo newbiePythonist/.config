@@ -33,11 +33,11 @@ set.tagbsearch = false
 -- set.swapfile = false
 
 cmd [[
-    colo zellner
     so ~/.config/nvim/vimscript/autocmds.vim
     so ~/.config/nvim/vimscript/customFunctions.vim
     so ~/.config/nvim/vimscript/mappings.vim
     so ~/.config/nvim/vimscript/tabLine.vim
+    so ~/.config/nvim/vimscript/completefunc.vim
 
     luafile ~/.config/nvim/lua/resetLspSyntax.lua
     hi Comment gui=none
@@ -48,6 +48,9 @@ cmd [[
     set signcolumn=no
     set inccommand=nosplit
     set shell+=\ -O\ globstar\ -O\ dotglob
+
+    let g:matches = []
+    let g:curWord = []
 ]]
 
 -- dirvish settings
@@ -80,3 +83,5 @@ require('lazyNvim')
 -- require('plugins.lsp')
 require('plugins.autopairs')
 require('plugins.nvimTree')
+
+cmd [[ colo xcodelight ]]
