@@ -29,6 +29,7 @@ set.lazyredraw = true
 set.scrolloff = 22
 set.wildmode = 'full:longest'
 set.tagbsearch = false
+set.completefunc = 'v:lua.LuaCompFunc'
 -- set.path = '**,.*'
 -- set.swapfile = false
 
@@ -37,7 +38,7 @@ cmd [[
     so ~/.config/nvim/vimscript/customFunctions.vim
     so ~/.config/nvim/vimscript/mappings.vim
     so ~/.config/nvim/vimscript/tabLine.vim
-    so ~/.config/nvim/vimscript/completefunc.vim
+    " so ~/.config/nvim/vimscript/completefunc.vim
 
     luafile ~/.config/nvim/lua/resetLspSyntax.lua
     hi Comment gui=none
@@ -83,5 +84,6 @@ require('lazyNvim')
 -- require('plugins.lsp')
 require('plugins.autopairs')
 require('plugins.nvimTree')
+require('luaCompletefunc')
 
 cmd [[ colo xcodelight ]]
