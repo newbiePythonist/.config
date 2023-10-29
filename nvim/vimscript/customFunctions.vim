@@ -64,12 +64,10 @@ endfu
 fu! PopupMenu()
     " don't trigger menu if line is empty
     if match(getline(line('.')), '^\s*$') == 0
-        let g:dont_complete = 0
         return
     endif
     " don't trigger menu if there's a space 1 before cursor
     if getline('.')[col('.')-2] == ' '
-        let g:dont_complete = 0
         return
     endif
     " don't trigger menu if 1 char before cursor there is not a word character or an underscore
@@ -77,10 +75,12 @@ fu! PopupMenu()
         return
     endif
 
-    " don't do nothing if popup is already visible
+    " trigger popup menu only if it's not already visible
     if pumvisible() == 0
-        " call feedkeys("\<C-x>\<C-u>")
-        call feedkeys("\<C-n>")
+        call feedkeys("\<C-x>\<C-u>")
+        " call feedkeys("\<C-n>")
         return
+    else
+        call feedkeys("\<C-e>\<C-x>\<C-u>")
     endif
 endfu

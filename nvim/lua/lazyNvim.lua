@@ -1,5 +1,4 @@
 require("lazy").setup({
-
     -- { 'LazyVim/LazyVim' },
     { 'folke/lazy.nvim' },
 
@@ -37,6 +36,7 @@ require("lazy").setup({
     { 'tpope/vim-surround' },
     { 'windwp/nvim-autopairs' },
     { 'j5shi/CommandlineComplete.vim' },
+    { 'nvim-treesitter/nvim-treesitter' },
     -- { 'justinmk/vim-dirvish' },
     -- { 'sheerun/vim-polyglot' },
 })

@@ -24,12 +24,14 @@ set.hlsearch = false
 set.ttimeoutlen = 0
 set.timeoutlen = 500
 set.completeopt = 'menu,menuone,noselect'
-cmd [[ set shortmess+=c  ]]
 set.lazyredraw = true
 set.scrolloff = 22
 set.wildmode = 'full:longest'
+cmd [[ set shortmess+=c  ]]
+cmd [[ set wildcharm=<tab> ]]
 set.tagbsearch = false
-set.completefunc = 'v:lua.LuaCompFunc'
+-- set.completefunc = 'v:lua.LuaCompFunc'
+set.completefunc = 'v:lua.LuaCompleteWords'
 -- set.path = '**,.*'
 -- set.swapfile = false
 
@@ -38,6 +40,7 @@ cmd [[
     so ~/.config/nvim/vimscript/customFunctions.vim
     so ~/.config/nvim/vimscript/mappings.vim
     so ~/.config/nvim/vimscript/tabLine.vim
+    so ~/.config/nvim/vimscript/autocompMappings.vim
     " so ~/.config/nvim/vimscript/completefunc.vim
 
     luafile ~/.config/nvim/lua/resetLspSyntax.lua
@@ -49,9 +52,6 @@ cmd [[
     set signcolumn=no
     set inccommand=nosplit
     set shell+=\ -O\ globstar\ -O\ dotglob
-
-    let g:matches = []
-    let g:curWord = []
 ]]
 
 -- dirvish settings
