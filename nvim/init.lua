@@ -30,14 +30,13 @@ set.wildmode = 'full:longest'
 cmd [[ set shortmess+=c  ]]
 cmd [[ set wildcharm=<tab> ]]
 set.tagbsearch = false
--- set.completefunc = 'v:lua.LuaCompFunc'
 set.completefunc = 'v:lua.LuaCompleteWords'
 -- set.path = '**,.*'
 -- set.swapfile = false
 
 cmd [[
-    so ~/.config/nvim/vimscript/autocmds.vim
     so ~/.config/nvim/vimscript/customFunctions.vim
+    so ~/.config/nvim/vimscript/autocmds.vim
     so ~/.config/nvim/vimscript/mappings.vim
     so ~/.config/nvim/vimscript/tabLine.vim
     so ~/.config/nvim/vimscript/autocompMappings.vim
@@ -57,10 +56,6 @@ cmd [[
 -- dirvish settings
 g.dirvish_relative_path = 0
 g.dirvish_mode = ':sort ,^.*[\\/],'
-
--- mucomplete
-cmd [[ let g:apc_enable_ft = {'*':1}  ]]
-g.apc_min_length = 1
 
 -- netrw settings
 g.netrw_banner = 0

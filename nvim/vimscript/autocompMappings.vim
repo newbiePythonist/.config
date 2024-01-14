@@ -50,6 +50,5 @@ inoremap <silent> Y Y<C-x><C-u>
 inoremap <silent> W W<C-x><C-u>
 inoremap <silent> K K<C-x><C-u>
 inoremap <silent> J J<C-x><C-u>
-
 inoremap <silent> _ _<C-x><C-u>
 inoremap <silent> - -<C-x><C-u>

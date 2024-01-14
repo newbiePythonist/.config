@@ -8,11 +8,14 @@ end
 
 function tableContains(t, pattern)
     for x in pairs(t) do
-        if t[x] == pattern then
-            return 1
+        -- iterate over each subtable item to search for <pattern>
+        for j in pairs(t[x]) do
+            if t[x][j] == pattern then
+                return true
+            end
         end
     end
-    return 0
+    return false
 end
 
 function LuaCompFunc(findstart, base)
@@ -66,15 +69,30 @@ function LuaCompleteWords(findstart, base)
         return start
     else
         local matches = {}
-        local lines = vim.api.nvim_buf_get_lines(0, 0, vim.api.nvim_buf_line_count(0), 0)
-        for linenr in pairs(lines) do
-            line = lines[linenr]
-            for word in string.gmatch(line, '%f[0-9A-Za-z_-]' .. base .. '[0-9A-Za-z_-]+') do
-                if tableLen(matches) >= 30 then
-                    return matches
+        -- iterate over all listed buffers
+        for bufnr=1,vim.fn.bufnr('$') do
+            -- if buffer is listed, iterate over all lines inside it
+            if vim.fn.buflisted(bufnr) then
+                local bufname = vim.fn.bufname(bufnr)
+                -- don't show current bufname in the completion menu
+                if bufnr == vim.fn.bufnr() then
+                    bufname = ''
                 end
-                if tableContains(matches, word) == 0 then
-                    table.insert(matches, word)
+                local lines = vim.api.nvim_buf_get_lines(bufnr, 0, vim.api.nvim_buf_line_count(bufnr), 0)
+                -- start iterating over lines in <bufnr>
+                for linenr in pairs(lines) do
+                    line = lines[linenr]
+                    -- iterate over each word in the line
+                    for word in string.gmatch(line, '%f[0-9A-Za-z_-]' .. base .. '[0-9A-Za-z_-]+%(?') do
+                        -- limit matches to a max of 30 entries
+                        if #matches >= 30 then
+                            return matches
+                        end
+                        -- check if matched word is already present, if not then add it
+                        if not tableContains(matches, word) then
+                            table.insert(matches, { word = word, kind = bufname })
+                        end
+                    end
                 end
             end
         end

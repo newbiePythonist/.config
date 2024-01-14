@@ -1,5 +1,5 @@
 autocmd FileType python
-            \ autocmd InsertLeave,BufWrite <buffer> exe 'norm! ml'|%s/\(^\s*\)\(if \|elif \|els\|while \|for \|def \|class \|with \|tr\|except \|finall\)\(.*\)\([^:]$\)/\1\2\3\4:/e|norm! `l
+            \ autocmd InsertLeave,BufWrite <buffer> exe 'norm! ml'|%s/\(^\s*\)\<\(if\|elif\|else\|while\|for\|def\|class\|with\|try\|except\|finally\)\>\([^:]*$\)/\1\2\3:/e|norm! `l
 
 au BufWrite,BufWritePre,BufWritePost * call delete(swapname("%"))
 au VimEnter luafile ~/.config/nvim/lua/resetLspSyntax.lua
